@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.wrapper {
+  width: 80%;
+  min-width: 930px;
+  margin: 0 auto;
+  border: 1px solid #000;
+  text-align: center;
+}
+.wrapper ul {
+  display: inline-block;
+}
+.wrapper ul li {
+  float: left;
+}
+.wrapper ul .item {
+  margin: 0 5px 10px;
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+.wrapper ul .item .image {
+  width: 100%;
+  overflow: hidden;
+}
+.wrapper ul .item img {
+  width: 100%;
+}

@@ -1,0 +1,111 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html, body, .wrapper, .ppt-list, .ppt-item {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+.wrapper {
+  position: relative;
+}
+.ppt-list .ppt-item {
+  display: none;
+  box-sizing: border-box;
+  padding: 200px;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.ppt-list .ppt-item.active {
+  display: block;
+}
+.ppt-list .ppt-item:nth-of-type(1){
+  background-image: url('../images/bg-1.jpg');
+}
+.ppt-list .ppt-item:nth-of-type(2){
+  background-image: url('../images/bg-2.jpg');
+}
+.ppt-list .ppt-item:nth-of-type(3){
+  background-image: url('../images/bg-3.jpg');
+}
+
+/* 标题文字和图片 */
+.ppt-item .title {
+  float: left;
+  width: 40%;
+}
+.ppt-item .title p {
+  font-size: 16px;
+}
+.ppt-item:nth-of-type(1) .title p{
+  font-size: 20px;
+}
+
+.ppt-item .img {
+  float: right;
+  width: 0%;
+}
+.ppt-item:nth-of-type(1) .img {
+  width: 40%;
+}
+.ppt-item .img img {
+  width: 100%;
+}
+
+/* 中间左右箭头 */
+.arrow {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 30px;
+  margin-top: -15px;
+}
+.arrow .left-arrow, .arrow .right-arrow {
+  position: absolute;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.left-arrow {
+  left: 100px;
+  background-image: url('../images/left-btn.png');
+}
+.right-arrow {
+  right: 100px;
+  background-image: url('../images/right-btn.png');
+}
+
+/* 下方原点 */
+.dots {
+  position: absolute;
+  bottom: 100px;
+  width: 100%;
+  height: 20px;
+  text-align: center;
+}
+.dots ul {
+  display: inline-block;
+}
+.dots ul li {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: #888;
+}
+.dots ul li:last-of-type {
+  margin-right: 0px;
+}
+.dots ul li.active {
+  background-color: #fff;
+}
