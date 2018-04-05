@@ -1,0 +1,135 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+.global-nav {
+  min-width: 980px;
+  height: 28px;
+  background-color: #545652;
+  color: #d5d5d5;
+  font-size: 0;
+}
+.global-nav a {
+  padding: 0 12px;
+  line-height: 28px;
+  font-size: 12px;
+  color: #d5d5d5;
+}
+.global-nav a:hover {
+  color: #fff;
+}
+
+.global-nav .sign {
+  float: right;
+  margin-right: 10px;
+  color: #d5d5d5;
+}
+.global-nav .app {
+  float: right;
+}
+
+.global-nav .menu li {
+  display: inline-block;
+}
+
+.head-wrapper {
+  width: 100%;
+  background-color: #f0f3ef;
+}
+
+.head {
+  width: 1040px;
+  padding: 10px 0 5px 0;
+  margin: 0 auto;
+}
+.head::after{
+  display: block;
+  content: "";
+  clear: both;
+}
+.head .logo {
+  float: left;
+  /* width: 140px;
+  height: 56px; */
+  margin-right: 13px;
+  background: url('http://img3.doubanio.com/dae/accounts/resources/19507ad/music/assets/lg_music_a12_2.png?s=1') no-repeat 0 12px;
+}
+.head .logo a {
+  display: inline-block;
+  width: 140px;
+  height: 56px;
+}
+
+.search-form {
+  margin-left: 140px;
+  padding: 10px;
+}
+
+.search-form .input {
+  float: left;
+  width: 470px;
+  height: 34px;
+  text-align: center;
+  background-image: url('../images/nav_mu_bg.png');
+}
+.search-form .input input {
+  width: 96%;
+  height: 30px;
+  padding-left: 10px;
+  border: none;
+  outline: none;
+}
+.search-form input[type="submit"] {
+  width: 38px;
+  height: 32px;
+  border: none;
+  outline: none;
+  background: url('../images/nav_mu_bg.png');
+  background-position: 0 -40px;
+  cursor: pointer;
+}
+
+
+#search_suggest {
+  display: none;
+  position: absolute;
+  width: 468px;
+  top: 79px;
+  left: 196px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  z-index: 99;
+}
+#search_suggest li {
+  border-bottom: 1px solid #ddd;
+}
+#search_suggest li:last-child {
+  border: none;
+}
+#search_suggest li:hover {
+  background-color: rgb(249, 249, 249);
+}
+#search_suggest li a img {
+  float: left;
+  width: 40px;
+  margin-top: 3px;
+  margin-right: 6px;
+}
+#search_suggest li a {
+  display: block;
+  padding: 6px;
+  color: #999;
+}
+#search_suggest li a::after {
+  display: block;
+  content: '';
+  clear: both;
+}
+#search_suggest li a em {
+  font-style: normal;
+  font-size: 13px;
+  color: #369;
+}
