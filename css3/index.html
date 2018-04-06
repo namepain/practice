@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css3练手</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .table {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 50px solid #333;
+      background: url('./images/2.png') no-repeat;
+      background-size: 100px;
+      animation: move 8s linear paused infinite .3s;
+    }
+    .pin {
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translate(-50%);
+      width: 10px;
+      height: 150px;
+      background-color: #888;
+      border-bottom-right-radius: 100%;
+      border-bottom-left-radius: 100%;
+      transform-origin: top;
+      transform: rotate(-60deg);
+      transition: all .3s linear;
+    }
+    button {
+      position: absolute;
+      bottom: 100px;
+      left: 400px;
+    }
+
+    @keyframes move {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .active {
+      transform: rotate(-30deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="table"></div>
+    <div class="pin"></div>
+  </div>
+
+  <button>点我</button>
+
+  <script>
+    var oBtn = document.getElementsByTagName('button')[0];
+    var oTable = document.getElementsByClassName('table')[0];
+    var pin = document.getElementsByClassName('pin')[0];
+    var flag;
+
+    oBtn.onclick = function(){
+      if(!flag){
+        flag = true;
+        pin.className = 'pin active';
+        oTable.style.animationPlayState = 'running';
+      } else {
+        flag = false;
+        pin.className = 'pin';
+        oTable.style.animationPlayState = 'paused';
+      }
+    }
+  </script>
+</body>
+</html>
