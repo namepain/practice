@@ -90,3 +90,24 @@ function throttle(func, wait, options) {
 
   return throttled;
 };
+
+// 根据 （x, y）坐标得到左右上下方向
+function getDirection(x ,y){
+  // n 个象限，加 (n - 1) 后 % n, 转化为 整数标志。
+  var d = (Math.round((Math.atan2(y,x) * (180/Math.PI) + 180)/90) + 3)%4;
+  var direction;
+  switch(d) {
+      case 0:
+          direction = 'top';
+          break;
+      case 1:
+          direction = 'right';
+          break;
+      case 2:
+          direction = 'bottom';
+          break;
+      case 3:
+          direction = 'left';
+  }
+  return direction;
+}
