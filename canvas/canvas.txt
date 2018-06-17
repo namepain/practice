@@ -1,0 +1,75 @@
+绘制一个简单的 canvas 有这么几个步骤
+
+1. 准备一个 canvas 元素并获取其画笔
+<canvas id="canvas" width="500px" height="500px;"></canvas>
+var oCanvas = document.getElementById('canvas');
+var ctx = oCanvas.getContext('2d');
+
+2. 定义笔的起始点
+ctx.moveTo(100, 100);
+
+3. 定义笔的轨迹，例如 先画向  （200,100），再画向（200,200）
+ctx.lineTo(200, 100);
+ctx.lineTo(200, 200);
+
+4. 描边。完成本次绘制
+ctx.stroke();
+
+上面绘制了一个90°的折线，绘制线段常用方法或属性（属性放在方法之前定义才有效）
+ctx.strokeStyle = 'green';
+ctx.fillStyle = 'red';
+ctx.lineWidth = '20';   // 线宽
+ctx.closePath();        // 闭合终点和起点
+ctx.fill();             // 填充
+
+注意：
+fill() 和 stroke() 方法都是作用在当前所有子路径的，
+倘若想重新定义 lineWidth、strokeStyle、fillStyle 等属性需要开启新的路径，
+ctx.beginPath();
+
+
+描边一个矩形
+ctx.rect(100, 100, 100, 200);
+ctx.stroke();
+
+也可 直接
+ctx.strokeRect(100, 100, 100, 200);
+ctx.fillRect(100, 100, 100, 200);
+这两个方法都会开启新的的路径，修改画笔属性不影响之前所画
+
+擦除画布
+ctx.clearRect(0, 0, 150, 150);
+
+
+有了以上准备，可以完成一个小动画：
+
+ctx.fillStyle = 'green';
+
+function drawRect(y){
+  ctx.fillRect(100, y, 30, 30);
+}
+
+var timer = setInterval(function(){
+  ctx.clearRect(0, 0, w, h);
+  drawRect(y);
+  y += 10
+  if(y > 470){
+    clearInterval(timer);
+  }
+}, 30);
+
+
+弧形
+arc(x, y, r, 起始弧度, 结束弧度, 弧形方向);
+(x, y) 定义圆心, r 为半径,
+角以弧度计， 0顺时针，1逆时针
+
+ctx.moveTo(250, 250);
+ctx.lineTo(350, 250);
+ctx.arc(250, 250, 100, 0, -Math.PI / 180 * 77, 0);
+ctx.closePath();
+ctx.stroke();
+
+圆角
+arcTo(x1, y1, x2, y2, r)
+绘制 同时与 “当前点、(x1, y1)连线” ，“(x1, y1)和(x2, y2)连线” 相切的圆弧

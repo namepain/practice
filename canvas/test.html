@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>canvas 测试</title>
+  <style>
+    #canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="500px" height="500px;"></canvas>
+
+  <script>
+    
+    var oCanvas = document.getElementById('canvas');
+    var ctx = oCanvas.getContext('2d');
+    var oCanvas1 = document.getElementById('canvas');
+    var ctx1 = oCanvas.getContext('2d');
+    var w = oCanvas.width;
+    var h = oCanvas.height;
+    var y = 100;
+
+    // ctx.moveTo(100, 100);
+    // ctx.lineTo(200, 100);
+    // ctx.lineTo(200, 200);
+    // ctx.lineWidth = '10';
+    // ctx.strokeStyle = 'green';
+    // ctx.fillStyle = 'red';
+    // ctx.stroke();
+    // ctx.fill();
+    
+    // ctx.beginPath();
+    // ctx.moveTo(300, 100);
+    // ctx.lineTo(400, 100);
+    // ctx.lineTo(400, 200);
+    // ctx.lineWidth = '20';
+    // ctx.strokeStyle = 'gary';
+    // ctx.fillStyle = 'blue';
+    // ctx.stroke();
+    // ctx.fill();
+
+    // ctx.rect(100, 100, 100, 200);
+    // ctx.stroke();
+
+    // ctx.lineWidth = '20';
+    // ctx.strokeStyle = 'blue';
+    // ctx.strokeRect(100, 100, 100, 200);
+    // ctx.strokeStyle = 'red';
+    // ctx.strokeRect(300, 100, 100, 200);
+
+    // ctx.fillStyle = 'red';
+    // ctx.fillRect(100, 100, 100, 200);
+    // ctx.fillStyle = 'green';
+    // ctx.fillRect(300, 100, 100, 200);
+
+    // ctx.clearRect(0, 0, w, h);
+
+    // ctx.fillStyle = 'green';
+    // ctx.fillRect(100, 170, 30, 30);
+
+    // function drawRect(y){
+    //   ctx.fillRect(100, y, 30, 30);
+    // }
+
+    // var timer = setInterval(function(){
+    //   ctx.clearRect(0, 0, w, h);
+    //   drawRect(y);
+    //   y += 10
+    //   if(y > 470){
+    //     clearInterval(timer);
+    //   }
+    // }, 30);
+
+
+    // ctx.moveTo(250, 250);
+    // ctx.lineTo(350, 250);
+    // ctx.arc(250, 250, 100, 0, -Math.PI / 180 * 77, 0);
+    // ctx.closePath();
+    // ctx.stroke();
+
+
+    // ctx.moveTo(100, 250);
+    // ctx.arcTo(350, 250, 350, 350, 30);
+    // ctx.arcTo(350, 350, 250, 350, 30);
+    // ctx.arcTo(250, 350, 250, 250, 30);
+    // ctx.arcTo(250, 250, 350, 250, 30);
+    // ctx.closePath();
+    // ctx.stroke();
+
+    var lastPoint = {},
+      nowPoint = {};
+    var oImg = new Image();
+    oImg.src = './images/2.png';
+
+    oImg.onload = function(){
+      // var fill = ctx.createPattern(oImg, 'no-repeat');
+      // ctx.fillStyle = fill;
+      // ctx.fillRect(0, 0, w, h);
+
+      // 高斯模糊
+      // ctx.drawImage(this, 0, 0, 400, 400);
+      // oData = ctx.getImageData(0, 0, 400, 400);
+      // var newSrc = gaussBlur(oData);
+      // ctx.putImageData(newSrc, 0, 0);
+
+      ctx.fillStyle = '#ccc';
+      ctx.fillRect(0, 0, w, h);
+      ctx.globalCompositeOperation = 'destination-out';
+      oCanvas.style.background = 'url(' + oImg.src + ')';
+      bindEvent();
+    }
+
+    function bindEvent(){
+      oCanvas.addEventListener('mousedown', function(e){
+        lastPoint.x = e.clientX - oCanvas.offsetLeft;
+        lastPoint.y = e.clientY - oCanvas.offsetTop;
+
+        oCanvas.addEventListener('mousemove', move, false);
+        document.addEventListener('mouseup', upFn, false);
+      }, false);
+    }
+
+    function move(e){
+      nowPoint.x = e.clientX - oCanvas.offsetLeft;
+      nowPoint.y = e.clientY - oCanvas.offsetTop;
+
+      ctx.beginPath();
+      ctx.fillStyle = '#000';
+
+      ctx.lineWidth = 40;
+      ctx.moveTo(lastPoint.x, lastPoint.y);
+      ctx.lineTo(nowPoint.x, nowPoint.y);
+      ctx.stroke();
+
+      ctx.arc(nowPoint.x, nowPoint.y, 20, 0, Math.PI * 2, 0);
+      ctx.closePath();
+      ctx.fill();
+
+      lastPoint.x = nowPoint.x;
+      lastPoint.y = nowPoint.y;
+    }
+
+    function upFn(){
+      oCanvas.removeEventListener('mousemove', move);
+      document.removeEventListener('mouseup', move);
+      clearCanvas();
+    }
+
+    function clearCanvas() {
+      var d = ctx.getImageData(0, 0, w, h),
+        c = 0,
+        data = d.data,
+        len = data.length;
+
+      for(var i = 3; i < len; i += 4){
+        if(data[i] === 0) {
+          c ++;
+        }
+      }
+      if(c > len / 4 * 0.7){
+        ctx.clearRect(0, 0, w, h);
+      }
+    }
+
+  </script>
+</body>
+</html>

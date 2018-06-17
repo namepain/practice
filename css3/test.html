@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css3动画</title>
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+    .wrapper {
+      position: relative;
+      /* margin: 200px; */
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+      perspective: 600px;
+      border-radius: 50%;
+    }
+    li {
+      position: absolute;
+      display: inline-block;
+      top: 0;
+      left: 50%;
+      margin-left: -1px;
+      height: 5px;
+      border: 1px solid #888;
+      transform-origin: 50% 100px;
+    }
+    li > span {
+      position: absolute;
+      transform: translate3d(-50%, 0, 0);
+    }
+    li:nth-of-type(1){
+      transform: rotate(30deg);
+    }
+    li:nth-of-type(2){
+      transform: rotate(60deg);
+    }
+    li:nth-of-type(3){
+      transform: rotate(90deg);
+    }
+    li:nth-of-type(4){
+      transform: rotate(120deg);
+    }
+    li:nth-of-type(5){
+      transform: rotate(150deg);
+    }
+    li:nth-of-type(6){
+      transform: rotate(180deg);
+    }
+    li:nth-of-type(7){
+      transform: rotate(210deg);
+    }
+    li:nth-of-type(8){
+      transform: rotate(240deg);
+    }
+    li:nth-of-type(9){
+      transform: rotate(270deg);
+    }
+    li:nth-of-type(10){
+      transform: rotate(300deg);
+    }
+    li:nth-of-type(11){
+      transform: rotate(330deg);
+    }
+
+    li:nth-of-type(1) > span{
+      transform: translateX(-50%) rotate(-30deg);
+    }
+    li:nth-of-type(2) > span{
+      transform: translateX(-50%) rotate(-60deg);
+    }
+    li:nth-of-type(3) > span{
+      transform: translateX(-50%) rotate(-90deg);
+    }
+    li:nth-of-type(4) > span{
+      transform: translateX(-50%) rotate(-120deg);
+    }
+    li:nth-of-type(5) > span{
+      transform: translateX(-50%) rotate(-150deg);
+    }
+    li:nth-of-type(6) > span{
+      transform: translateX(-50%) rotate(-180deg);
+    }
+    li:nth-of-type(7) > span{
+      transform: translateX(-50%) rotate(-210deg);
+    }
+    li:nth-of-type(8) > span{
+      transform: translateX(-50%) rotate(-240deg);
+    }
+    li:nth-of-type(9) > span{
+      transform: translateX(-50%) rotate(-270deg);
+    }
+    li:nth-of-type(10) > span{
+      transform: translateX(-50%) rotate(-300deg);
+    }
+    li:nth-of-type(11) > span{
+      transform: translateX(-50%) rotate(-330deg);
+    }
+
+
+    .wrapper1 {
+      display: flex;
+      width: 400px;
+      height: 400px;
+      border: 1px solid #000;
+      justify-content: center;
+      flex-flow: row wrap;
+    }
+    .wrapper1 .item {
+      width: 150px;
+      height: 100px;;
+      border: 1px solid red;
+    }
+    .wrapper1 .item:nth-of-type(1){
+      /* flex-grow: 1; */
+      /* flex-shrink: 1; */
+      /* order: 1; */
+    }
+    .wrapper1 .item:nth-of-type(2){
+      /* flex-grow: 2; */
+      /* flex-shrink: 0; */
+      /* order: 0; */
+    }
+    .wrapper1 .item:nth-of-type(3){
+      /* flex-grow: 3; */
+      /* flex-shrink: 0;
+      order: 1; */
+    }
+
+    .box-wrapper {
+      width: 401px;
+      height: 401px;
+      border: 1px solid #000;
+      transform-style: preserve-3d;
+      perspective: 600px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .box {
+      position: relative;
+      width: 109px;
+      height: 109px;
+      perspective: 600px;
+      transform-style: preserve-3d;
+      animation: move 2s linear .2s infinite;
+    }
+    .font , .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      background-image: url('./images/yuan.jpg');
+    }
+    .font {
+      background-position: -9px -70px;
+    }
+    .back {
+      transform: rotateY(180deg);
+      background-position: -136px -70px;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    @keyframes move {
+      0% {
+        transform: rotateY(0deg);
+      }
+      100%{
+        transform: rotateY(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box-wrapper">
+    <div class="box">
+      <div class="back">
+        <!-- <img src="./images/yuan.jpg" alt=""> -->
+      </div>
+      <div class="font">
+        <!-- <img src="./images/yuan.jpg" alt=""> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <ul>
+      <li><span>1</span></li>
+      <li><span>2</span></li>
+      <li><span>3</span></li>
+      <li><span>4</span></li>
+      <li><span>5</span></li>
+      <li><span>6</span></li>
+      <li><span>7</span></li>
+      <li><span>8</span></li>
+      <li><span>9</span></li>
+      <li><span>10</span></li>
+      <li><span>11</span></li>
+      <li><span>12</span></li>
+    </ul>
+  </div>
+
+  <div class="wrapper1">
+    <div class="item">111</div>    
+    <div class="item">2222</div>    
+    <div class="item">3333</div>    
+    <div class="item">4444</div>    
+    <div class="item">5555</div>    
+  </div>
+</body>
+</html>
