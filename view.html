@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>两栏布局</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* .main {
+      position: relative;
+      width: 100%;
+    }
+    .left {
+      position: absolute;
+      width: 200px;
+    }
+    .right  {
+      position: absolute;
+      left: 200px;
+      right: 0px;
+    } */
+
+    /* .left {
+      float: left;
+      width: 200px;
+      background-color: red;
+    }
+    .right {
+      margin-left: 200px;
+      background-color: blue
+    } */
+
+    /* .main {
+      font-size: 0;
+    }
+    .left, .right {
+      font-size: 16px;
+      display: inline-block;
+    }
+    .left {
+      width: 200px;
+      background-color: red;
+    }
+    .right {
+      width: calc(100% - 200px);
+      background-color: blue;
+    } */
+
+    /* .main {
+      display: table;
+      width: 100%;
+    }
+    .left {
+      display: table-cell;
+      width: 200px;
+      background-color: red
+    }
+    .right {
+      display: table-cell;
+      background-color: blue;
+    } */
+    /* .main {
+      display: flex;
+    }
+    .left {
+      width: 200px;
+      background-color: red;
+    }
+    .right {
+      flex: 1;
+      background-color: blue
+    } */
+
+    .main {
+      padding: 0 200px;
+    }
+    .left, .middle, .right {
+      position: relative;
+      float: left;
+    }
+    .middle {
+      width: 100%;
+      background-color: yellow;
+    }
+    .left {
+      margin-left: -100%;
+      left: -200px;
+      width: 200px;
+      background-color: red;
+    }
+    .right {
+      margin-left: -300px;
+      right: -300px; 
+      width: 200px;
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="middle">middle</div>
+    <div class="left">left</div>
+    <div class="right">right</div>
+  </div>
+
+  <script>
+  
+    var inherit = (function(target, origin){
+      var f = function(){}
+      return function() {
+        f.prototype = origin.prototype
+        target.prototype = new f()
+        target.prototype.constructor = target
+        return target
+      }
+    })()
+  
+  </script>
+</body>
+
+</html>
