@@ -1,0 +1,30 @@
+{
+    "run": {
+        "default": "",
+        "items": [
+            {
+                "name": "demo",
+                "projectName": "demo",
+                "workingDirectory": "e:\\DUYI_node\\myhomework\\spring-demo",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    },
+    "debug": {
+        "default": "",
+        "items": [
+            {
+                "name": "demo",
+                "projectName": "demo",
+                "workingDirectory": "e:\\DUYI_node\\myhomework\\spring-demo",
+                "args": [],
+                "vmargs": [],
+                "env": {},
+                "preLaunchTask": ""
+            }
+        ]
+    }
+}
