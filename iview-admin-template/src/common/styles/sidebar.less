@@ -1,0 +1,139 @@
+#app {
+  // 主体区域
+  .main-container {
+    min-height: 100%;
+    transition: margin-left .28s;
+    margin-left: 200px;
+    position: relative;
+  }
+  // 侧边栏
+  .sidebar-container {
+    transition: width 0.28s;
+    width: 200px !important;
+    height: 100%;
+    position: fixed;
+    font-size: 0px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 1001;
+    .scrollbar-wrapper {
+      height: 100%;
+      overflow: hidden;
+      > div {
+        width: 220px;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+      }
+    }
+
+    .svg-icon {
+      margin-right: 6px;
+    }
+  }
+  .ivu-menu {
+    min-width: 200px;
+  }
+  .hideSidebar {
+    .sidebar-container {
+      width: 36px !important;
+    }
+    .scrollbar-wrapper > div {
+      transition: width 0.28s;
+      width: 52px;
+    }
+    .main-container {
+      margin-left: 36px;
+    }
+    .ivu-menu-item {
+      padding-left: 10px !important;
+    }
+    .ivu-menu-submenu {
+      overflow: hidden;
+      &>.ivu-menu-submenu-title {
+        padding-left: 10px !important;
+        .ivu-menu-submenu-title-icon {
+          display: none;
+        }
+      }
+    }
+
+    .menu-collapsed {
+      padding-top: 10px;
+      font-size: 18px;
+      text-align: center;
+
+      > .ivu-dropdown{
+        height: 49px;
+        line-height: 49px;
+        width: 100%;
+        > .ivu-dropdown-rel {
+          cursor: pointer;
+          padding: 0;
+        }
+      }
+      .ivu-select-dropdown {
+        width: 160px;
+        margin-left: 4px;
+
+        .ivu-dropdown-rel, .ivu-dropdown-item {
+          line-height: normal;
+          padding: 7px 16px;
+          color: #515a6e;
+          text-align: left;
+          font-size: 14px;
+          cursor: pointer;
+          .svg-icon {
+            margin-right: 6px;
+          }
+        }
+      }
+      .ivu-tooltip{
+        height: 49px;
+        line-height: 49px;
+        width: 100%;
+        .ivu-tooltip-rel{
+          width: 100%;
+        }
+        .ivu-tooltip-popper .ivu-tooltip-content{
+          .ivu-tooltip-arrow{
+            border-right-color: #fff;
+          }
+          .ivu-tooltip-inner{
+            text-align: left;
+            background: #fff;
+            color: #495060;
+          }
+        }
+      }
+      .svg-icon {
+        margin-right: 0px;
+      }
+    }
+  }
+
+  //适配移动端
+  .mobile {
+    .main-container {
+      margin-left: 0px;
+    }
+    .sidebar-container {
+      transition: transform .28s;
+      width: 200px !important;
+    }
+    &.hideSidebar {
+      .sidebar-container {
+        transition-duration: 0.3s;
+        transform: translate3d(-200px, 0, 0);
+      }
+    }
+  }
+  .withoutAnimation {
+    .main-container,
+    .sidebar-container {
+      transition: none;
+    }
+  }
+}
